@@ -16,7 +16,7 @@ from bs4 import SoupStrainer
 load_dotenv()
 os.environ['LANGCHAIN_API_KEY']=os.getenv('LANGCHAIN_API_KEY')
 os.environ['LANGCHAIN_TRACKING_V2']=os.getenv('LANGCHAIN_TRACKING_V2')
-os.environ['LANGCHAIN_ENDPOINT']=os.getenv['LANGCHAIN_ENDPOINT']
+LANGCHAIN_ENDPOINT="https://api.smith.langchain.com"
 # Document loader
 loader = WebBaseLoader(
     'https://en.wikipedia.org/wiki/Elon_Musk',
