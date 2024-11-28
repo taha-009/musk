@@ -1,6 +1,8 @@
 langchain-community
 langchain_huggingface
 langchain
+fastapi
+uvicorn
 transformers 
 qdrant_client
 langchain-qdrant
