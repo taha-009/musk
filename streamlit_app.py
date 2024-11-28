@@ -15,7 +15,7 @@ from bs4 import SoupStrainer
 # Load environment variables
 load_dotenv()
 os.environ['LANGCHAIN_API_KEY']=os.getenv('LANGCHAIN_API_KEY')
-os.environ['langchain_tracking_v2']=os.getenv('langchain_tracking_v2')
+os.environ['LANGCHAIN_TRACKING_V2']=os.getenv('LANGCHAIN_TRACKING_V2')
 # Document loader
 loader = WebBaseLoader(
     'https://en.wikipedia.org/wiki/Elon_Musk',
