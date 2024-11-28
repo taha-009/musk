@@ -14,10 +14,10 @@ from bs4 import SoupStrainer
 
 # Load environment variables
 load_dotenv()
-langchain_tracking_v2="true"
+LANGCHAIN_TRACKING_V2="true"
 LANGCHAIN_ENDPOINT="https://api.smith.langchain.com"
-LANGCHAIN_API_KEY="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"
-LANGCHAIN_PROJECT="pr-bold-node-57"
+LANGCHAIN_API_KEY="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"
+LANGCHAIN_PROJECT="ELON"
 # Document loader
 loader = WebBaseLoader(
     'https://en.wikipedia.org/wiki/Elon_Musk',
