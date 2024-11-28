@@ -14,7 +14,7 @@ from bs4 import SoupStrainer
 
 # Load environment variables
 load_dotenv()
-LANGCHAIN_TRACING_V2='true'
+langchain_tracking_v2=true
 LANGCHAIN_ENDPOINT="https://api.smith.langchain.com"
 LANGCHAIN_API_KEY="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"
 LANGCHAIN_PROJECT="pr-bold-node-57"
