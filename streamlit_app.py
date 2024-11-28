@@ -16,13 +16,13 @@ from bs4 import SoupStrainer
 load_dotenv()
 os.environ['LANGCHAIN_API_KEY']=os.getenv('LANGCHAIN_API_KEY')
 os.environ['LANGCHAIN_TRACKING_V2']=os.getenv('LANGCHAIN_TRACKING_V2')
+os.environ['LANGCHAIN_ENDPOINT']=os.getenv['LANGCHAIN_ENDPOINT']
 # Document loader
 loader = WebBaseLoader(
     'https://en.wikipedia.org/wiki/Elon_Musk',
     bs_kwargs=dict(parse_only=SoupStrainer(class_=('mw-content-ltr mw-parser-output')))
 )
 documents = loader.load()
-
 # Split documents into chunks
 recursive = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=100)
 chunks = recursive.split_documents(documents)
