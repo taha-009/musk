@@ -4,6 +4,8 @@ langchain
 langsmith
 transformers 
 qdrant_client
+uvicorn
+fastapi
 langchain-qdrant
 streamlit
 bs4
