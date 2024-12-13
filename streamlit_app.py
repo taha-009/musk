@@ -11,13 +11,6 @@ from operator import itemgetter
 from dotenv import load_dotenv
 import bs4
 from bs4 import SoupStrainer
-from langchain.tracing import enable_tracing
-from langchain.tracing import start_session
-import logging
-logging.basicConfig(level=logging.DEBUG)
-enable_tracing()
-session = start_session(project_name="langchain tracking", endpoint="https://api.smith.langchain.com")
-print("LangSmith session started:", session)
 
 # Load environment variables
 load_dotenv()
