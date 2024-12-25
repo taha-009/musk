@@ -79,10 +79,11 @@ chat_container = st.container()
 # Initialize session state for chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
-
+def user_input():
+st.session_state.send_input=True
 # Input field for queries
 with st.container():
-    query = st.text_input("Please enter a query", label_visibility="collapsed", key="query")
+    query = st.text_input("Please enter a query", label_visibility="collapsed", key="query" on_change=user_input)
     send_button = st.button("Send", key="send_btn")  # Single send button
 
 # Chat logic
