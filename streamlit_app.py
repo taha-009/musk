@@ -31,7 +31,7 @@ def load_document_loader():
     recursive = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=100)
     chunks = recursive.split_documents(documents)
     return chunks 
-
+chunks=load_document_loader()
 load_document_loader()
 # Initialize embedding and Qdrant
 embed = HuggingFaceEmbeddings(model_name='BAAI/bge-small-en-v1.5')
