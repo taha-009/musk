@@ -80,13 +80,15 @@ chat_container = st.container()
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+def send_input():
+    st.session_state.send_input=True
 # Input field for queries
 with st.container():
-    query = st.text_input("Please enter a query", label_visibility="collapsed", key="query")
+    query = st.text_input("Please enter a query", label_visibility="collapsed", key="query", on_change=send_input)
     send_button = st.button("Send", key="send_btn")  # Single send button
 
 # Chat logic
-if send_button and query:
+if send_button or send_input and query:
     with st.spinner("Processing... Please wait!"):  # Spinner starts here
         response = _chain.invoke({'question': query})  # Generate response
     # Update session state with user query and AI response
