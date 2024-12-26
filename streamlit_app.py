@@ -92,3 +92,7 @@ if send_button and query:
     # Update session state with user query and AI response
     st.session_state.messages.append(("user", query))
     st.session_state.messages.append(("ai", response))
+
+with chat_container:
+    for role, message in st.session_state.messages:
+        st.chat_message(role).write(message)
