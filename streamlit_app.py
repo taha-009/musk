@@ -35,13 +35,13 @@ def load_and_process_documents():
     recursive = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=100)
     chunks = recursive.split_documents(documents)
     return chunks
-    
+ load_and_process_documents()
 # Initialize embedding and Qdrant
 embed = HuggingFaceEmbeddings(model_name='BAAI/bge-small-en-v1.5')
 
 
 # Qdrant 
-load_and_process_documents()
+
 
 api_key = os.getenv('qdrant_api_key')
 url = 'https://1328bf7c-9693-4c14-a04c-f342030f3b52.us-east4-0.gcp.cloud.qdrant.io:6333'
