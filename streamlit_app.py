@@ -20,6 +20,7 @@ LANGCHAIN_ENDPOINT = os.getenv("LANGCHAIN_ENDPOINT")
 LANGCHAIN_API_KEY = os.getenv("LANGCHAIN_API_KEY")
 LANGCHAIN_PROJECT = os.getenv("LANGCHAIN_PROJECT")
 # Document loader
+@st.cache_data
 def load_document_loader():
     loader = WebBaseLoader(
     'https://en.wikipedia.org/wiki/Elon_Musk',
