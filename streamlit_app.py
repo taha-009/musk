@@ -77,24 +77,39 @@ st.title("Ask Anything About Elon Musk")
 chat_container = st.container()
 
 # Initialize session state for chat history
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+# Initialize session state for input handling
+if "query" not in st.session_state:
+    st.session_state.query = ""  # Store the current query
+if "send_flag" not in st.session_state:
+    st.session_state.send_flag = False  # Track if the query should be sent
 
-def send_input():
-    st.session_state.send_input=True
+# Function to handle input changes
+def handle_input_change():
+    st.session_state.send_flag = True  # Set the flag to send query
+
 # Input field for queries
 with st.container():
-    query = st.text_input("Please enter a query", label_visibility="collapsed", key="query", on_change=send_input)
-    send_button = st.button("Send", key="send_btn")  # Single send button
+    st.text_input(
+        "Please enter a query",
+        key="query",
+        on_change=handle_input_change,  # Trigger this function when Enter is pressed
+        label_visibility="collapsed",
+    )
+    send_button = st.button("Send", key="send_btn")  # Send button
 
-# Chat logic
-if send_button or send_input and query:
-    with st.spinner("Processing... Please wait!"):  # Spinner starts here
-        response = _chain.invoke({'question': query})  # Generate response
+# Chat logic (process query only when appropriate)
+if (st.session_state.send_flag or send_button) and st.session_state.query.strip():
+    with st.spinner("Processing... Please wait!"):
+        response = _chain.invoke({'question': st.session_state.query})  # Generate response
     # Update session state with user query and AI response
-    st.session_state.messages.append(("user", query))
+    st.session_state.messages.append(("user", st.session_state.query))
     st.session_state.messages.append(("ai", response))
+    # Reset flags and input field
+    st.session_state.query = ""  # Clear the input field
+    st.session_state.send_flag = False  # Reset the flag
 
+# Display chat history from session state
+chat_container = st.container()
 with chat_container:
     for role, message in st.session_state.messages:
         st.chat_message(role).write(message)
