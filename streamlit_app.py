@@ -32,7 +32,6 @@ def load_document_loader():
     chunks = recursive.split_documents(documents)
     return chunks 
 chunks=load_document_loader()
-load_document_loader()
 # Initialize embedding and Qdrant
 embed = HuggingFaceEmbeddings(model_name='BAAI/bge-small-en-v1.5')
 
