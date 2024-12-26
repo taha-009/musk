@@ -25,17 +25,14 @@ loader = WebBaseLoader(
     bs_kwargs=dict(parse_only=SoupStrainer(class_=('mw-content-ltr mw-parser-output')))
 )
 documents = loader.load()
-#Split documents into chunks
+# Split documents into chunks
 recursive = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=100)
 chunks = recursive.split_documents(documents)
 
 # Initialize embedding and Qdrant
 embed = HuggingFaceEmbeddings(model_name='BAAI/bge-small-en-v1.5')
 
-
-# Qdrant 
-
-
+# Qdrant setup
 api_key = os.getenv('qdrant_api_key')
 url = 'https://1328bf7c-9693-4c14-a04c-f342030f3b52.us-east4-0.gcp.cloud.qdrant.io:6333'
 doc_store = QdrantVectorStore.from_existing_collection(
@@ -51,7 +48,7 @@ google_api = os.getenv('google_api_key')
 llm = GoogleGenerativeAI(model="gemini-1.5-flash-002", google_api_key=google_api)
 
 # Setup retriever and chain
-num_chunks = 1
+num_chunks = 5
 retriever = doc_store.as_retriever(search_type="mmr", search_kwargs={"k": num_chunks})
 
 def format_docs(docs):
@@ -82,18 +79,24 @@ chat_container = st.container()
 # Initialize session state for chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
-def user_input():
-    st.session_state.send_input=True
+
 # Input field for queries
 with st.container():
-    query = st.text_input("Please enter a query", label_visibility="collapsed", key="query" , on_change=user_input)
+    query = st.text_input("Please enter a query", label_visibility="collapsed", key="query")
     send_button = st.button("Send", key="send_btn")  # Single send button
 
 # Chat logic
-if not user_input and send_button and query :
+if send_button and query:
     with st.spinner("Processing... Please wait!"):  # Spinner starts here
         response = _chain.invoke({'question': query})  # Generate response
     # Update session state with user query and AI response
+    st.session_state.messages.append(("user", query))
+    st.session_state.messages.append(("ai", response))
+
+# Display chat history from session state
+with chat_container:
+    for role, message in st.session_state.messages:
+        st.chat_message(role).write(message)
     st.session_state.messages.append(("user", query))
     st.session_state.messages.append(("ai", response))
 
