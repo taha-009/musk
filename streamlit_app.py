@@ -20,15 +20,18 @@ LANGCHAIN_ENDPOINT = os.getenv("LANGCHAIN_ENDPOINT")
 LANGCHAIN_API_KEY = os.getenv("LANGCHAIN_API_KEY")
 LANGCHAIN_PROJECT = os.getenv("LANGCHAIN_PROJECT")
 # Document loader
-loader = WebBaseLoader(
+def load_document_loader():
+    loader = WebBaseLoader(
     'https://en.wikipedia.org/wiki/Elon_Musk',
     bs_kwargs=dict(parse_only=SoupStrainer(class_=('mw-content-ltr mw-parser-output')))
-)
-documents = loader.load()
-# Split documents into chunks
-recursive = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=100)
-chunks = recursive.split_documents(documents)
+    )
+    documents = loader.load()
+    # Split documents into chunks
+    recursive = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=100)
+    chunks = recursive.split_documents(documents)
+    return chunks 
 
+load_document_loader()
 # Initialize embedding and Qdrant
 embed = HuggingFaceEmbeddings(model_name='BAAI/bge-small-en-v1.5')
 
