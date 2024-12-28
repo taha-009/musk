@@ -13,21 +13,21 @@ import bs4
 from bs4 import SoupStrainer
 
 #from langsmith import LangSmith
-
+load_dotenv()
 #langsmith = LangSmith(
 LANGCHAIN_TRACING_V2="true"
 LANGCHAIN_ENDPOINT="https://api.smith.langchain.com"
-LANGCHAIN_API_KEY="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"
+LANGCHA
+IN_API_KEY="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"
 LANGCHAIN_PROJECT="pr-kindly-cutlet-35"
     #api_key=os.getenv("LANGCHAIN_API_KEY", "your-langsmith-api-key"),
     #endpoint=os.getenv("LANGCHAIN_ENDPOINT", "https://api.smith.langchain.com"),
    # project=os.getenv("LANGCHAIN_PROJECT", "your-project-name"),
    # tracing_v2=LANGCHAIN_TRACING_V2  # Should be a Python boolean (True/False)
-#)
+
 
 
 # Load environment variables
-load_dotenv()
 #HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACE_API_TOKEN")
 #LANGCHAIN_TRACING_V2 = os.getenv("LANGCHAIN_TRACING_V2")
 #LANGCHAIN_ENDPOINT = os.getenv("LANGCHAIN_ENDPOINT")
