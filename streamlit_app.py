@@ -1,4 +1,4 @@
-import os
+#import os
 import streamlit as st
 from langchain_community.document_loaders import WebBaseLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 import bs4
 from bs4 import SoupStrainer
 
-from langsmith import LangSmith
+#from langsmith import LangSmith
 
 #langsmith = LangSmith(
 LANGCHAIN_TRACING_V2="true"
