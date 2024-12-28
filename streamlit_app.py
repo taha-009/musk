@@ -12,13 +12,18 @@ from dotenv import load_dotenv
 import bs4
 from bs4 import SoupStrainer
 
+
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_ENDPOINT="https://api.smith.langchain.com"
+LANGCHAIN_API_KEY="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"
+LANGCHAIN_PROJECT="pr-kindly-cutlet-35"
 # Load environment variables
-load_dotenv()
-HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACE_API_TOKEN")
-LANGCHAIN_TRACING_V2 = os.getenv("LANGCHAIN_TRACING_V2")
-LANGCHAIN_ENDPOINT = os.getenv("LANGCHAIN_ENDPOINT")
-LANGCHAIN_API_KEY = os.getenv("LANGCHAIN_API_KEY")
-LANGCHAIN_PROJECT = os.getenv("LANGCHAIN_PROJECT")
+#load_dotenv()
+#HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACE_API_TOKEN")
+#LANGCHAIN_TRACING_V2 = os.getenv("LANGCHAIN_TRACING_V2")
+#LANGCHAIN_ENDPOINT = os.getenv("LANGCHAIN_ENDPOINT")
+#LANGCHAIN_API_KEY = os.getenv("LANGCHAIN_API_KEY")
+#LANGCHAIN_PROJECT = os.getenv("LANGCHAIN_PROJECT")
 # Document loader
 @st.cache_data
 def load_document_loader():
