@@ -24,11 +24,6 @@ LANGCHAIN_PROJECT="pr-kindly-cutlet-35"
    # project=os.getenv("LANGCHAIN_PROJECT", "your-project-name"),
    # tracing_v2=LANGCHAIN_TRACING_V2  # Should be a Python boolean (True/False)
 
-def clear_input_field():
-    if st.session_state.user_question == "":
-        st.session_state.user_question = st.session_state.user_input
-        st.session_state.user_input = ""
-
 # Load environment variables
 #HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACE_API_TOKEN")
 #LANGCHAIN_TRACING_V2 = os.getenv("LANGCHAIN_TRACING_V2")
@@ -96,9 +91,15 @@ chat_container = st.container()
 # Initialize session state for chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
-
+def clear_input_field():
+    if st.session_state.user_question == "":
+        st.session_state.user_question = st.session_state.user_input
+        st.session_state.user_input = ""
+        
 def send_input():
     st.session_state.send_input=True
+    clear_input_field()
+
 # Input field for queries
 with st.container():
     query = st.text_input("Please enter a query", key="query", on_change=send_input)
