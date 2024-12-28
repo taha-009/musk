@@ -84,9 +84,10 @@ if "messages" not in st.session_state:
 def send_input():
     st.session_state.send_input=True
 # Input field for queries
-with st.container():
+#with st.container():
     query = st.text_input("Please enter a query", key="query", on_change=send_input)
     send_button = st.button("Send", key="send_btn")  # Single send button
+    query, send_button = st.columns(2)
 
 # Chat logic
 if send_button or send_input and query:
