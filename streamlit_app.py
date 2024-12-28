@@ -24,7 +24,10 @@ LANGCHAIN_PROJECT="pr-kindly-cutlet-35"
    # project=os.getenv("LANGCHAIN_PROJECT", "your-project-name"),
    # tracing_v2=LANGCHAIN_TRACING_V2  # Should be a Python boolean (True/False)
 
-
+def clear_input_field():
+    if st.session_state.user_question == "":
+        st.session_state.user_question = st.session_state.user_input
+        st.session_state.user_input = ""
 
 # Load environment variables
 #HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACE_API_TOKEN")
@@ -99,7 +102,7 @@ def send_input():
 # Input field for queries
 with st.container():
     query = st.text_input("Please enter a query", key="query", on_change=send_input)
-    send_button = st.button("Send", key="send_btn")  # Single send button
+    send_button = st.button("Send", key="send_btn", on_click=clear_input_field)  # Single send button
 
 # Chat logic
 if send_button or send_input and query:
