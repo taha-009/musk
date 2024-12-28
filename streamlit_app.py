@@ -102,8 +102,8 @@ def send_input():
 
 # Input field for queries
 with st.container():
-    query = st.text_input("Please enter a query", key="query", on_change=send_input())
-    send_button = st.button("Send", key="send_btn", on_click=clear_input_field())  # Single send button
+    query = st.text_input("Please enter a query", key="query", on_change=send_input)
+    send_button = st.button("Send", key="send_btn", on_click=clear_input_field)  # Single send button
 
 # Chat logic
 if send_button or st.session_state.send_input:
