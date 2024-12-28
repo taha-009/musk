@@ -27,7 +27,7 @@ LANGCHAIN_PROJECT="pr-kindly-cutlet-35"
 
 
 # Load environment variables
-#load_dotenv()
+load_dotenv()
 #HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACE_API_TOKEN")
 #LANGCHAIN_TRACING_V2 = os.getenv("LANGCHAIN_TRACING_V2")
 #LANGCHAIN_ENDPOINT = os.getenv("LANGCHAIN_ENDPOINT")
