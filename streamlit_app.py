@@ -98,7 +98,7 @@ def clear_input_field():
         
 def send_input():
     st.session_state.send_input=True
-    clear_input_field()
+    #clear_input_field()
 
 # Input field for queries
 with st.container():
