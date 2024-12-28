@@ -106,7 +106,7 @@ with st.container():
     send_button = st.button("Send", key="send_btn", on_click=clear_input_field)  # Single send button
 
 # Chat logic
-if send_button or send_input:
+if query and send_button or send_input :
     with st.spinner("Processing... Please wait!"):  # Spinner starts here
         response = _chain.invoke({'question': query})  # Generate response
     # Update session state with user query and AI response
