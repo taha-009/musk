@@ -13,7 +13,7 @@ import bs4
 from bs4 import SoupStrainer
 
 
-LANGCHAIN_TRACING_V2=true
+LANGCHAIN_TRACING_V2=True
 LANGCHAIN_ENDPOINT="https://api.smith.langchain.com"
 LANGCHAIN_API_KEY="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"
 LANGCHAIN_PROJECT="pr-kindly-cutlet-35"
